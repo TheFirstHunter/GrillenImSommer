@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="Style1.css">
+    <title>Einkaufsliste</title>
+</head>
+
+<body bgcolor="black">
+    <ul>
+        <li>
+            <a href="index.html">Home</a>
+        </li>
+        <li>
+            <a href="Lecker.html">Rezepte</a>
+        </li>
+        <li>
+            <a href="Kontakt.html">Kontakt</a>
+        </li>
+        <li>
+            <a class="aktive" href="Einkaufsliste.html">Einkaufsliste</a>
+        </li>
+    </ul>
+    <div class="content">
+        <p style="color:#3fff00;">
+            <strong>Einkaufsliste</strong>
+        </p>
+        <form onsubmit="addItem(); return false;">
+                <p style="color:#3fff00;">  Zutaten:</p>
+            <input id="Zutat" type="text" name="Zutat">
+            <button type="submit">
+                Hinzufügen
+            </button>
+        </form>
+        <div id="liste">
+
+        </div>
+    </div>
+    <script>
+        // Init der Seite
+        (function () {
+            var listeString = localStorage.getItem('einkaufsliste');
+            var liste;
+            if (!listeString) {
+                liste = [];
+            } else {
+                liste = listeString.split(',');
+            }
+            liste.forEach(function (zutat) {
+                createButtonAndAddToList(zutat);
+            });
+        })();
+
+        function addItemToStorage(zutat) {
+            // Füge die Zutat der Liste im Speicher hinzu
+            var listeString = localStorage.getItem('einkaufsliste');
+            var liste;
+            if (!listeString) {
+                liste = [];
+            } else {
+                liste = listeString.split(',');
+            }
+            liste.push(zutat);
+            localStorage.setItem('einkaufsliste', liste);
+        }
+
+        function deleteItemFromStorage(zutat) {
+            // Lösche die Zutat aus der Liste im Speicher
+            var listeString = localStorage.getItem('einkaufsliste');
+            var liste;
+            if (!listeString) {
+                liste = [];
+            } else {
+                liste = listeString.split(',');
+            }
+            liste = liste.filter(e => e !== zutat);
+            localStorage.setItem('einkaufsliste', liste);
+        }
+
+        function createButtonAndAddToList(zutat) {
+            // Zutat der Liste hinzufügen und anzeigen
+            var button = document.createElement('button');
+            button.innerHTML = zutat;
+            button.classList.add('list-button');
+
+            button.onclick = deleteItem;
+
+            document.getElementById("liste").appendChild(button);
+        }
+
+        function deleteItem(event) {
+            event.target.parentNode.removeChild(event.target);
+            deleteItemFromStorage(event.target.innerHTML);
+        }
+
+        function addItem() {
+
+            var zutat = document.getElementById("Zutat").value;
+
+            if (zutat == "") {
+                return false;
+            }
+
+            addItemToStorage(zutat);
+
+            createButtonAndAddToList(zutat);
+
+            document.getElementById("Zutat").value = "";
+            return false;
+        }
+
+    </script>
+</body>
+
+</html>

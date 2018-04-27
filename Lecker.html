@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Rezepte</title>
+    <link rel="stylesheet" href="Style1.css">
+</head>
+
+<body bgcolor="black">
+    <ul>
+        <li>
+            <a href="index.html">Home</a>
+        </li>
+        <li>
+            <a class="aktive" href="Lecker.html">Rezepte</a>
+        </li>
+        <li>
+            <a href="Kontakt.html">Kontakt</a>
+        </li>
+        <li>
+            <a href="Einkaufsliste.html">Einkaufsliste</a>
+        </li>
+    </ul>
+    <div class="content" style="color:white;">
+        <p>
+            <strong class="Second Buchstabe">L</strong>
+            <strong class="Drittens Buchstabe">e</strong>
+            <strong class="Viertens Buchstabe">c</strong>
+            <strong class="Fünftens Buchstabe">k</strong>
+            <strong class="Sechstens Buchstabe">e</strong>
+            <strong class="Siebtens Buchstabe">r</strong>
+        </p>
+
+        <img src="http://wordpress-amann2016enfold.p381550.webspaceconfig.de/wp-content/uploads/2017/03/die-perfekte-kombination-feines-bier-zum-grillen.jpg"
+            style="max-height: 350px">
+
+        <p>
+        </p>
+
+        <button id="Button" type="button">Zufälliges Rezept Anzeigen</button>
+        <p id="Rezept"></p>
+        <img id="bild" class="bild">
+        <p id="zutaten"></p>
+        <p id="zubereitung"></p>
+
+        <button id="Button1" type="button">Getränk Anzeigen</button>
+        <p id="Rezept1"></p>
+    </div>
+    <script>
+
+        var myarray = new Array(
+            {
+                name: "Steak",
+                bild: "https://static.essen-und-trinken.de/bilder/07/e6/46464/article_image_big/45674b5a7c2d4c21464137de8ac7cc82.jpg",
+                zutaten: "Steak, Salz, Kräuterbutter",
+                zubereitung: "Auf das Steak Salz streuen und daraufhin auf den Grill legen. Auf jeder Seite 5 Minuten Grillen."
+            },
+            {
+                name: "Pute",
+                bild: "https://www.ndr.de/fernsehen/sendungen/markt/pute162_v-contentxl.jpg",
+                zutaten: "Putenfleisch, Pfeffer, Grillsauce",
+                zubereitung: "Das Putenfleisch mit Pfeffer und Gewürzen einreiben und daraufhin auf den Grilllegen. Dort bleibt es dann liegen, bis es durch ist."
+            },
+            {
+                name: "Kräuterbaguette",
+                bild: "http://1.bp.blogspot.com/-9dFbkLInWIE/UjQczx6CkCI/AAAAAAAABNo/4yzxmJAekd4/s1600/DSC_0043.JPG",
+                zutaten: "Baguette, Kräuterbutter",
+                zubereitung: "In das Baguette oben kleine Rillen schneiden, in diese kommt dann die Kräuterbutter."
+            },
+            {
+                name: "Forelle",
+                bild: "https://www.weblog-deluxe.de/wp-content/uploads/2013/04/gegrillter-Fisch.jpg",
+                zutaten: "Forelle, Zitronenscheiben, Gewürze",
+                zubereitung: "In den Bauch der Forelledie Gewürze hinein streuen. Außen auf die Haut des Fisches die Zitronenscheiben, damit er an dem Fischgitter nicht Kleben bleibt."
+            },
+            {
+                name: "Spare ribs",
+                bild: "https://img.taste.com.au/eVxpCYaO/taste/2016/11/chipotle-pork-ribs-103431-1.jpeg",
+                zutaten: "Spare ribs, Gewürze, BBQ-Sauce",
+                zubereitung: "Die Spare ribs mit BBQ-Sauce einschmieren und daruafhin die Gewürze wie Pfeffer draufstreuen."
+            });
+
+
+        document.getElementById("Button").addEventListener("click", function () {
+            var index = Math.floor(Math.random() * myarray.length);
+            var random = myarray[index];
+            document.getElementById("Rezept").innerHTML = random.name;
+            document.getElementById("bild").src = random.bild;
+            document.getElementById("zutaten").innerHTML = random.zutaten;
+            document.getElementById("zubereitung").innerHTML = random.zubereitung;
+        });
+
+        var myarray1 = new Array("Cola", "Fanta", "Bier", "Radler", "Wasser");
+        document.getElementById("Button1").addEventListener("click", function () {
+            var index = Math.floor(Math.random() * myarray1.length);
+            var random = myarray1[index];
+            document.getElementById("Rezept1").innerHTML = random;
+        });
+    </script>
+</body>
+
+</html>

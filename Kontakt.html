@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="Style1.css">
+    <meta charset="utf-8">
+    <title>Kontakt</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body bgcolor="black">
+    <ul>
+        <li>
+            <a href="index.html">Home</a>
+        </li>
+        <li>
+            <a href="Lecker.html">Rezepte</a>
+        </li>
+        <li>
+            <a class="aktive" href="Kontakt.html">Kontakt</a>
+        </li>
+        <li>
+            <a href="Einkaufsliste.html">Einkaufsliste</a>
+        </li>
+    </ul>
+    <div style="color:white;" class="content">
+        <p> Bei fragen zu unseren Rezepten oder unserer Website können sie uns jeder zeit eine E-mail schreiben und so Kontakt
+            zu uns Aufnehmen.
+            <br> TheFirstHunter@gmx.de
+            <br> Wir wünschen ihnen Viel Spaß bei ihren Grill Abenden</p>
+        <img src="http://img25.dreamies.de/img/477/b/wn0y3u117ce.gif">
+        <div id="forcast"></div>
+        <div id="overcast"></div>
+        <input id="daytime" type="range" style="width: 100%" name="daytime" min="0" max="105" value="50" onchange="showForcast()">
+        <div id="demo"></div>
+    </div>
+
+    <script>
+        var forcast;
+        $.ajax({
+            'url': 'http://apis.is/weather/forecasts/en',
+            'type': 'GET',
+            'dataType': 'json',
+            'data': { 'stations': '4472' },
+            'success': function (response) {
+                //console.log(response);
+                forcast = response;
+                console.log(response);
+                showForcast();
+            }
+        });
+        function showForcast() {
+            var daytime = document.getElementById("daytime").value;
+
+            var overcast = forcast.results[0].forecast[daytime]; // Die 5 gegen den wert vom number input austauschen
+            document.getElementById("forcast").innerHTML = forcast.results[0].name;
+            document.getElementById("overcast").innerHTML = overcast.ftime + ': ' + overcast.T;
+            var greeting;
+            if (overcast.T > 2) {
+                greeting = "Perfektes Grillwetter";
+            }
+            else {
+                greeting = "Kein Grillwetter"
+            }
+            document.getElementById("demo").innerHTML = greeting;
+        }
+
+    </script>
+</body>
+
+</html>

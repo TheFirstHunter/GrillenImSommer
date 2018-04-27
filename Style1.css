@@ -1,0 +1,85 @@
+html, body {
+    padding: 0;
+    margin: 0;
+}
+.content {
+    padding: 30px;
+}
+
+.Buchstabe {
+    font-size: 30px;
+}
+
+.Second {
+    color: yellow;
+}
+
+.Drittens {
+    color: white;
+}
+
+.Viertens {
+    color: yellow;
+}
+
+.Fünftens {
+    color: white;
+}
+
+.Sechstens {
+    color: yellow;
+}
+
+.Siebtens {
+    color: white;
+}
+
+.grillen {
+    color: yellow;
+    font-size: 40px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(71, 8, 245);
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li .aktive {
+    background-color: rgb(9, 177, 255);
+    cursor: no-drop;
+}
+
+li a:hover {
+    background-color: rgb(0, 0, 0);
+}
+.bild {
+    max-width: 350px; 
+    min-width: 350px;
+}
+
+.list-button{
+    display: block;
+    background-color: red;
+    border: none;
+    margin-top: 5px;
+    height: 40px;
+    min-width: 150px;
+}
+.button{
+    background-color: white
+}
